@@ -10,6 +10,9 @@
   border-radius: 10px;
   border: 1px solid var(--border-color);
 }
+.card-product:hover {
+  box-shadow: 0 0 5px #0c2575;
+}
 .card-product__header {
   height: 200px;
   padding: 20px;
@@ -49,7 +52,7 @@
   font-size: 1.1rem;
   margin-bottom: 15px;
   height: 42px;
-
+  cursor: pointer;
 }
 .card-product__price-label {
   font-size: 0.8rem;
@@ -69,19 +72,35 @@
   width: 40px;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: none;
+  border: none; 
+  border: 2px solid var(--secondary-color);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: background 0.7s ease;
+}
+
+.card-product__btn:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   cursor: pointer;
+  transition: background 0.7s ease;
 }
 
 .form-home {
   margin-top: 150px;
 }
 
-.form-home input {
+input {
   border: 3px solid #0b5fcc;
   border-radius: 5px 0 0 5px;
+  padding: 8px 0;
+  color: #042649;
+  font-weight: bold;
+}
+
+select {
+  border: 3px solid #0b5fcc;
+  border-radius: 5px;
   padding: 8px 0;
   color: #042649;
   font-weight: bold;
@@ -95,9 +114,32 @@
   border-radius: 0 5px 5px 0;
 }
 
-.home-input {
+.btn-search:hover {
+  background-color: #2581f8;
+  cursor: pointer;
+}
+
+/* .home-input {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-right: 10%;
+} */
+
+.input-category{
+  margin-left: -20px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 150px;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-right: 40px;
+}
+
+.category-select {
+  width: 230px;
 }

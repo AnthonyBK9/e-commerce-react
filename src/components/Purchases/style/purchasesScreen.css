@@ -45,7 +45,7 @@
   .purchases {
     padding: 0 var(--padding-tablet);
     width: min(800px, 100%);
-    margin: 30px auto 70px;
+    margin: 130px auto 70px;
   }
   .purchases__title {
     font-size: 1.8rem;

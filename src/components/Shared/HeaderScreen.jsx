@@ -11,10 +11,8 @@ const HeaderScreen = () => {
   const clickMenuHam = () => {
     navbar.current.classList.toggle('navbar-open')
   }
-
   const cart = useSelector(state => state.cart)
-  console.log(cart?.length);
-
+  
   return (
     <header className="header">
       <h1 className="header__title">
