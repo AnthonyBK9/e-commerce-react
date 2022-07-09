@@ -17,9 +17,6 @@ const HomeScreen = () => {
     dispatch(getAllCategories())
   }, [dispatch]) 
 
-  // console.log(ceteoryFilterSelect)
-  // console.log(products)
-
   useEffect(() => {
     if (ceteoryFilterSelect !== undefined) {
       const filter = products.filter(e => e.category.id === ceteoryFilterSelect.value)
@@ -27,8 +24,6 @@ const HomeScreen = () => {
     }
   }, [ceteoryFilterSelect])
   
-  console.log(getCategory)
-
   return (
     <div className='home'>
       <div>

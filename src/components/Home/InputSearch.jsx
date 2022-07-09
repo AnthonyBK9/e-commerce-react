@@ -27,7 +27,6 @@ const InputSearch = ({setCeteoryFilterSelect}) => {
       <div className="category-select">
         <Select onChange={setCeteoryFilterSelect} options={options}>
         </Select>
-    
       </div>
       <form onSubmit={handleSubmit(submit)}>
         <input type="text" {...register('searchText')} />
