@@ -137,6 +137,12 @@ select {
   width: 230px;
 }
 
+.card-alert{
+  position: absolute;
+  top: 35px;
+  right: 2px;
+}
+
 @media screen and (max-width: 376px) {
   .input-container {
     display: flex;

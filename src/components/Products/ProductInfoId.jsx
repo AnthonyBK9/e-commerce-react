@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getAllProductsCart } from '../../store/slices/cart.slice'
 import getConfig from '../../utils/getConfig'
+import Alert from '@mui/material/Alert';
+
 
 const ProductInfoId = ({product}) => {
 
   const [counter, setCounter] = useState(1)
-
+  const [addCart, setAddCart] = useState(false)
   const dispatch = useDispatch()
 
   const addToCart = () => {
@@ -21,8 +23,11 @@ const ProductInfoId = ({product}) => {
 
     axios.post(URL, addproduct, getConfig())
       .then(res => {
-        console.log(res.data)
+        setAddCart(true)
         dispatch(getAllProductsCart())
+        setTimeout(() => {
+          setAddCart(false)
+        }, 3000)
       })
       .catch(err => console.log(err.data))
   }
@@ -49,10 +54,13 @@ const ProductInfoId = ({product}) => {
         <div className='product-info__counter'>{counter}</div>
         <div onClick={plusOne} className='product-info__plus'>+</div>
       </div>
+      {
+        addCart && <Alert severity="success"><strong>Add to card</strong></Alert>
+      }
       <button 
         onClick={addToCart} 
         className='product-info__btn'>
-        Add to Cart <i className="fa-solid fa-cart-plus"></i>
+        Add to Cart<i className="fa-solid fa-cart-plus"></i>
       </button>
     </article>
   )

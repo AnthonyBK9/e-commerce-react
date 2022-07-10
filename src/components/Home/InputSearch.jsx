@@ -12,6 +12,7 @@ const InputSearch = ({setCeteoryFilterSelect}) => {
     console.log(data)
   }
 
+  
   const options = [
     { value: 1, label: 'Smart TV' },
     { value: 2, label: 'Computers' },

@@ -1,16 +1,17 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getAllProductsCart } from '../../store/slices/cart.slice'
 import getConfig from '../../utils/getConfig'
+import Alert from '@mui/material/Alert';
 
 const ProductCard = ({product}) => {
 
   const navigate = useNavigate()
+  const [addCart, setAddCart] = useState(false)
 
   const goToProductId = () => navigate(`/product/${product.id}`)
-
   const dispatch = useDispatch()
 
   const addCartProduct = e => {
@@ -24,8 +25,11 @@ const ProductCard = ({product}) => {
   
     axios.post(URL, objProduct, getConfig() )
       .then(res => {
-        console.log(res.data)
+        setAddCart(true)
         dispatch(getAllProductsCart())
+        setTimeout(() => {
+          setAddCart(false)
+        }, 3000)
       })
       .catch(err => console.log(err.data))
   }
@@ -50,6 +54,11 @@ const ProductCard = ({product}) => {
           <h3 className='card-product__price-label'>Price</h3>
           <p className='card-product__price-number'>$ {product.price}</p>
         </div>
+        {
+          addCart &&  <div className="card-alert">
+                        <Alert severity="success"> <strong>Add to card</strong> </Alert>
+                      </div>
+        }
         <button onClick={addCartProduct} className='card-product__btn'>
           <i className="fa-solid fa-cart-plus"></i> 
         </button>
