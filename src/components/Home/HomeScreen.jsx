@@ -9,6 +9,8 @@ const HomeScreen = () => {
 
   const [ceteoryFilterSelect, setCeteoryFilterSelect] = useState()
   const [getCategory, setgetCategory] = useState()
+  const [getProduct, setGetProduct] = useState()
+  const [productSearch, setProductSearch] = useState()
   const products = useSelector(state => state.products)
   const categories = useSelector(state => state.categories)
   const dispatch = useDispatch()
@@ -22,13 +24,23 @@ const HomeScreen = () => {
       const filter = products.filter(e => e.category.id === ceteoryFilterSelect.value)
         setgetCategory(filter)
     }
-  }, [ceteoryFilterSelect])
+  }, [ceteoryFilterSelect]);
+
+  useEffect(() => {
+    if (productSearch !== undefined) {
+      const productFilter = products.filter(e => e.title === 'iPhone 12')
+      setProductSearch(productFilter);
+    }
+  }, [productSearch])
   
+  // console.log(getProduct);
+  // console.log(products);
+  // console.log(productSearch);
   return (
     <div className='home'>
       <div>
         <div className="home-input">
-          <InputSearch setCeteoryFilterSelect={setCeteoryFilterSelect}/>
+          <InputSearch setCeteoryFilterSelect={setCeteoryFilterSelect} setGetProduct={setGetProduct}/>
         </div>
         <div className='products-container'>
           {

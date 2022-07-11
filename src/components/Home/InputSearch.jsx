@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Select from 'react-select'
-import { useSelector, useDispatch } from 'react-redux'
-import { getAllCategories } from '../../store/slices/categories.slice'
 
-const InputSearch = ({setCeteoryFilterSelect}) => {
+const InputSearch = ({setCeteoryFilterSelect, setGetProduct}) => {
 
   const {handleSubmit, register, reset} = useForm()
 
   const submit = data => {
-    console.log(data)
+    setGetProduct(data)
+    reset({
+      searchText: ''
+    })
   }
-
   
   const options = [
     { value: 1, label: 'Smart TV' },
@@ -29,10 +29,10 @@ const InputSearch = ({setCeteoryFilterSelect}) => {
         <Select onChange={setCeteoryFilterSelect} options={options}>
         </Select>
       </div>
-      <form onSubmit={handleSubmit(submit)}>
+      {/* <form onSubmit={handleSubmit(submit)}>
         <input type="text" {...register('searchText')} />
         <button className="btn-search"><i className="fa-solid fa-magnifying-glass"></i></button>
-      </form>
+      </form> */}
       
     </div>
 
